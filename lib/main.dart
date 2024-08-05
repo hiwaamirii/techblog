@@ -20,7 +20,36 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [Locale('fa')],
       //farsi
       theme: ThemeData(
+        fontFamily: "dana",
+        textTheme: const TextTheme(
+          headlineLarge: TextStyle(
+              fontFamily: 'dana',
+              fontWeight: FontWeight.w800,
+              fontSize: 17,
+              color: Colors.black),
+          bodyLarge: TextStyle(
+              fontFamily: 'dana',
+              fontWeight: FontWeight.w400,
+              fontSize: 15,
+              color: Colors.black),
+          headlineMedium: TextStyle(
+              fontFamily: 'dana',
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
+              color: Colors.white),
+          labelMedium: TextStyle(
+              fontFamily: 'dana',
+              fontWeight: FontWeight.w800,
+              fontSize: 16,
+              color: Colors.red),
+          labelSmall: TextStyle(
+              fontFamily: 'dana',
+              fontWeight: FontWeight.w800,
+              fontSize: 16,
+              color: Colors.green),
+        ),
       ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
