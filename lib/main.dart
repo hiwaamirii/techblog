@@ -20,30 +20,30 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [Locale('fa')],
       //farsi
       theme: ThemeData(
-        fontFamily: "dana",
+        fontFamily: "vazir",
         textTheme: const TextTheme(
           headlineLarge: TextStyle(
-              fontFamily: 'dana',
+              fontFamily: 'vazir',
               fontWeight: FontWeight.w800,
               fontSize: 17,
               color: Colors.black),
           bodyLarge: TextStyle(
-              fontFamily: 'dana',
+              fontFamily: 'vazir',
               fontWeight: FontWeight.w400,
               fontSize: 15,
               color: Colors.black),
           headlineMedium: TextStyle(
-              fontFamily: 'dana',
+              fontFamily: 'vazir',
               fontWeight: FontWeight.w400,
               fontSize: 16,
               color: Colors.white),
           labelMedium: TextStyle(
-              fontFamily: 'dana',
+              fontFamily: 'vazir',
               fontWeight: FontWeight.w800,
               fontSize: 16,
               color: Colors.red),
           labelSmall: TextStyle(
-              fontFamily: 'dana',
+              fontFamily: 'vazir',
               fontWeight: FontWeight.w800,
               fontSize: 16,
               color: Colors.green),
