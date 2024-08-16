@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:techblog/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
+      home: const SplashScreen(),
     );
   }
 }

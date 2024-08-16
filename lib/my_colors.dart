@@ -1,7 +1,8 @@
 import 'dart:ui';
 
-class solidColors{
+class SolidColors{
   static const Color colorTitle = Color.fromARGB(255, 40, 107, 184);
+  static const Color primaryColor = Color.fromARGB(255, 68, 4, 87);
   static const Color textTitle = Color.fromARGB(255, 0, 0, 0);
   static const Color scaffoldBg = Color.fromARGB(255, 255, 255, 255);
   static const Color lightText = Color.fromARGB(255, 255, 255, 255);
