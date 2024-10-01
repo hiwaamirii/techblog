@@ -56,6 +56,16 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w800,
               fontSize: 16,
               color: Colors.green),
+          headlineSmall: TextStyle(
+              fontFamily: 'vazir',
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              color: SolidColors.posterTitle),
+          titleSmall: TextStyle(
+              fontFamily: 'vazir',
+              fontSize: 16,
+              fontWeight: FontWeight.w300,
+              color: SolidColors.posterSubTitle),
         ),
       ),
       debugShowCheckedModeBanner: false,

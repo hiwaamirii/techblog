@@ -7,6 +7,7 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var textTheme = Theme.of(context).textTheme;
     var size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
@@ -39,11 +40,7 @@ class MainScreen extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     ),
-                  ),
-                  Container(
-                    width: size.width / 1.25,
-                    height: size.height / 4.2,
-                    decoration: const BoxDecoration(
+                    foregroundDecoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(16)),
                         gradient: LinearGradient(
                           colors: gradiantColors.homePosterCoverGradiant,
@@ -51,8 +48,27 @@ class MainScreen extends StatelessWidget {
                           end: Alignment.bottomCenter,
                         )),
                   ),
+                  Positioned(
+                    bottom: 8,
+                    left: 0,
+                    right: 0,
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text("ملیکا عزیزی - یک روز پیش",
+                                style: textTheme.titleSmall),
+                            Text("Like 253", style: textTheme.titleSmall),
+                          ],
+                        ),
+                        Text("دوازده قدم برنامه نویسی یک دوره ی...",
+                            style: textTheme.headlineSmall),
+                      ],
+                    ),
+                  )
                 ],
-              )
+              ),
             ],
           ),
         ),
