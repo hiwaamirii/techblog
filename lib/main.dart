@@ -38,9 +38,9 @@ class MyApp extends StatelessWidget {
               color: Colors.black),
           bodyLarge: TextStyle(
               fontFamily: 'vazir',
-              fontWeight: FontWeight.w400,
-              fontSize: 15,
-              color: Colors.black),
+              fontWeight: FontWeight.w800,
+              fontSize: 17,
+              color: SolidColors.seeMore),
           headlineMedium: TextStyle(
               fontFamily: 'vazir',
               fontWeight: FontWeight.w400,

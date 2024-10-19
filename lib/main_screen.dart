@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/models/fake_data.dart';
 import 'package:techblog/my_colors.dart';
+import 'package:techblog/my_strings.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -129,6 +130,43 @@ class MainScreen extends StatelessWidget {
                         ),
                       );
                     })),
+              ),
+              const SizedBox(height: 32),
+              // see more
+              Padding(
+                padding: EdgeInsets.only(right: bodyMargin, bottom: 8),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      "assets/icons/bluepen.png",
+                      height: 30,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      myStrings.viewHotestBlog,
+                      style: textTheme.bodyLarge,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: bodyMargin),
+                child: SizedBox(
+                  height: size.height / 4.1,
+                  child: ListView.builder(
+                      itemCount: 7,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: ((context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            height: 50,
+                            width: 100,
+                            color: Colors.amberAccent,
+                          ),
+                        );
+                      })),
+                ),
               )
             ],
           ),
@@ -137,4 +175,3 @@ class MainScreen extends StatelessWidget {
     );
   }
 }
-// 23 دقیقه مانده
