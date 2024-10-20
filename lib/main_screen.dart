@@ -47,7 +47,7 @@ class MainScreen extends StatelessWidget {
                     foregroundDecoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(16)),
                         gradient: LinearGradient(
-                          colors: gradiantColors.homePosterCoverGradiant,
+                          colors: GradiantColors.homePosterCoverGradiant,
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                         )),
@@ -86,7 +86,7 @@ class MainScreen extends StatelessWidget {
                             style: textTheme.headlineSmall),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
               const SizedBox(height: 16),
@@ -105,7 +105,7 @@ class MainScreen extends StatelessWidget {
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(24)),
                             gradient: LinearGradient(
-                              colors: gradiantColors.tags,
+                              colors: GradiantColors.tags,
                               begin: Alignment.centerRight,
                               end: Alignment.centerLeft,
                             ),
@@ -149,23 +149,91 @@ class MainScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(right: bodyMargin),
-                child: SizedBox(
-                  height: size.height / 4.1,
-                  child: ListView.builder(
-                      itemCount: 7,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: ((context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            height: 50,
-                            width: 100,
-                            color: Colors.amberAccent,
+              // blog list
+              SizedBox(
+                height: size.height / 3.5,
+                child: ListView.builder(
+                  itemCount: blogList.getRange(0, 5).length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: ((context, index) {
+                    // blog item
+                    return Padding(
+                      padding:
+                          EdgeInsets.only(right: index == 0 ? bodyMargin : 15),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: SizedBox(
+                              height: size.height / 5.3,
+                              width: size.width / 2.4,
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: const BorderRadius.all(
+                                        Radius.circular(16),
+                                      ),
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                            blogList[index].imageUrl),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    foregroundDecoration: const BoxDecoration(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(16),
+                                      ),
+                                      gradient: LinearGradient(
+                                        colors: GradiantColors.blogPost,
+                                        begin: Alignment.bottomCenter,
+                                        end: Alignment.topCenter,
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    bottom: 8,
+                                    left: 0,
+                                    right: 0,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Text(blogList[index].writer,
+                                            style: textTheme.titleSmall),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              blogList[index].views,
+                                              style: textTheme.titleSmall,
+                                            ),
+                                            const SizedBox(width: 8),
+                                            const Icon(
+                                              Icons.remove_red_eye_sharp,
+                                              size: 16,
+                                              color: Colors.white,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                        );
-                      })),
+                          SizedBox(
+                            width: size.width / 2.4,
+                            child: Text(
+                              blogList[index].title,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
                 ),
               )
             ],

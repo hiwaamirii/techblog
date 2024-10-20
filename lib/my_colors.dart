@@ -18,7 +18,7 @@ class SolidColors {
   static const Color seeMore = Color.fromARGB(255, 40, 107, 255);
 }
 
-class gradiantColors {
+class GradiantColors {
   static const List<Color> bottomNav = [
     const Color.fromARGB(255, 25, 0, 94),
     const Color.fromARGB(255, 68, 4, 87)
@@ -31,5 +31,9 @@ class gradiantColors {
     const Color.fromARGB(0, 0, 0, 0),
     const Color.fromARGB(195, 62, 20, 88),
     const Color.fromARGB(255, 280, 20, 81),
+  ];
+  static const List<Color> blogPost = [
+    const Color.fromARGB(255, 0, 0, 0),
+    const Color.fromARGB(0, 0, 0, 0)
   ];
 }
