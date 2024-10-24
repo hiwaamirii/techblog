@@ -330,3 +330,41 @@ List<BlogModel> blogList = [
 در آن گزارش رتبه ایران در شاخص «اختلال» ۴۷ از ۵۰ بود. از نظر شاخص محدودیت هم رتبه ۴۹ در میان ۵۰ کشور را داشتیم و شاخص‌های سرعت هم ایران را در رده آخر این فهرست متشکل از ۵۰ کشور نشان می‌داد. بنابراین، «ایران در مجموع با کسب ۱۴۶ امتیاز منفی (از مجموع ۱۵۰ امتیاز ممکن) در صدر کشورهای با بدترین کیفیت اینترنت قرار دارد.»""",
       views: "690"),
 ];
+List<PodCastModel> podCastList = [
+  PodCastModel(
+    id: 1,
+    imageUrl:
+        "https://cdn-arch.shenoto.com/shenoto-channel/f4697963-cb6d-4090-9b5c-e60eefb2b93d/cover/200.jpg",
+    title: "زاویه",
+  ),
+  PodCastModel(
+    id: 2,
+    imageUrl:
+        "https://cdn-arch.shenoto.com/shenoto-album/f3f08726-335c-4da5-a73b-552c0440fe9d/cover/200.jpg",
+    title: "رادیو مرز",
+  ),
+  PodCastModel(
+    id: 3,
+    imageUrl:
+        "https://cdn-arch.shenoto.com/shenoto-channel/78fcbb72-bbf3-4e3d-acdc-bf9d151f7439/cover/200.jpg",
+    title: "Logos",
+  ),
+  PodCastModel(
+    id: 4,
+    imageUrl:
+        "https://cdn-arch.shenoto.com/shenoto-channel/05df3055-acf7-41ab-aa1e-48bcbde37b81/cover/200.jpg",
+    title: "سرآشپز",
+  ),
+  PodCastModel(
+    id: 5,
+    imageUrl:
+        "https://cdn-arch.shenoto.com/shenoto-channel/8dfcf07a-a7e4-410e-ae91-46a480b0f215/cover/200.jpg",
+    title: "گوشی دستته",
+  ),
+  PodCastModel(
+    id: 6,
+    imageUrl:
+        "https://cdn-arch.shenoto.com/shenoto-channel/d26815b8-9732-4503-8362-66f4a8b13b09/cover/200.jpg",
+    title: "پرچم سفید",
+  ),
+];
