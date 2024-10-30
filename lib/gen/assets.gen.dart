@@ -12,12 +12,29 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/bluepen.png
+  AssetGenImage get bluepen => const AssetGenImage('assets/icons/bluepen.png');
+
   /// File path: assets/icons/hashtagicon.png
   AssetGenImage get hashtagicon =>
       const AssetGenImage('assets/icons/hashtagicon.png');
 
+  /// File path: assets/icons/home.png
+  AssetGenImage get home => const AssetGenImage('assets/icons/home.png');
+
+  /// File path: assets/icons/podcasticon.png
+  AssetGenImage get podcasticon =>
+      const AssetGenImage('assets/icons/podcasticon.png');
+
+  /// File path: assets/icons/user.png
+  AssetGenImage get user => const AssetGenImage('assets/icons/user.png');
+
+  /// File path: assets/icons/write.png
+  AssetGenImage get write => const AssetGenImage('assets/icons/write.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [hashtagicon];
+  List<AssetGenImage> get values =>
+      [bluepen, hashtagicon, home, podcasticon, user, write];
 }
 
 class $AssetsImagesGen {

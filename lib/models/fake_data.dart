@@ -15,7 +15,7 @@ List<HashTagModel> tagList = [
   HashTagModel(title: "کاتلین"),
   HashTagModel(title: "وب"),
   HashTagModel(title: "هوش مصنوعی"),
-  HashTagModel(title: "iot"),
+  HashTagModel(title: "IOS"),
   HashTagModel(title: "دارت"),
 ];
 
