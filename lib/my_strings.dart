@@ -4,4 +4,8 @@ class myStrings{
   static const String relatedArticles = "نوشته های مرتبط";
   static const String writeArticle = "ارسال مقاله";
   static const String submitPodcast = "ارسال پادکست";
+  static const String imageProfileEdit = "ویرایش عکس پروفایل";
+  static const String myFavBlog = "مقالات مورد علاقه من";
+  static const String myFavPodcast = "مقالات مورد علاقه من";
+  static const String logout = "خروج از حساب کاربری";
 }

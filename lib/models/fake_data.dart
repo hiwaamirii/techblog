@@ -334,8 +334,8 @@ List<PodCastModel> podCastList = [
   PodCastModel(
     id: 1,
     imageUrl:
-        "https://cdn-arch.shenoto.com/shenoto-channel/f4697963-cb6d-4090-9b5c-e60eefb2b93d/cover/200.jpg",
-    title: "زاویه",
+        "https://cdn-arch.shenoto.com/shenoto-channel/0faff961-d391-4eb8-a294-fd8b1ecc387d/cover/200.jpg",
+    title: "متاورس",
   ),
   PodCastModel(
     id: 2,
