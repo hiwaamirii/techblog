@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/my_colors.dart';
+import 'package:techblog/my_component.dart';
 import 'package:techblog/my_strings.dart';
 
 class profileScreen extends StatelessWidget {
@@ -41,6 +42,60 @@ class profileScreen extends StatelessWidget {
               ),
             ],
           ),
+          const SizedBox(height: 60),
+          Text(
+            "هیوا امیری",
+            style: textTheme.headlineLarge,
+          ),
+          const SizedBox(height: 12),
+          Text(
+            "hiwaamiri.ir@gmail.com",
+            style: textTheme.headlineLarge,
+          ),
+          const SizedBox(height: 40),
+          techDivider(size: size),
+          InkWell(
+            onTap: () {},
+            splashColor: SolidColors.primaryColor,
+            child: SizedBox(
+              height: 45,
+              child: Center(
+                child: Text(
+                  myStrings.myFavBlog,
+                  style: textTheme.headlineLarge,
+                ),
+              ),
+            ),
+          ),
+          techDivider(size: size),
+          InkWell(
+            onTap: () {},
+            splashColor: SolidColors.primaryColor,
+            child: SizedBox(
+              height: 45,
+              child: Center(
+                child: Text(
+                  myStrings.myFavPodcast,
+                  style: textTheme.headlineLarge,
+                ),
+              ),
+            ),
+          ),
+          techDivider(size: size),
+          InkWell(
+            onTap: () {},
+            splashColor: SolidColors.primaryColor,
+            child: SizedBox(
+              height: 45,
+              child: Center(
+                child: Text(
+                  myStrings.logout,
+                  style: textTheme.headlineLarge,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 100),
         ],
       ),
     );
