@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/my_colors.dart';
+import 'package:techblog/view/home_screen.dart';
 import 'package:techblog/view/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -17,9 +18,11 @@ class _MainScreenState extends State<MainScreen> {
     var textTheme = Theme.of(context).textTheme;
     var size = MediaQuery.of(context).size;
     double bodyMargin = size.width / 10;
-    List<Widget> techMainScreenPages= [
-      homeScreen(size: size, textTheme: textTheme, bodyMargin: bodyMargin), // index 0
-      profileScreen(size: size, textTheme: textTheme, bodyMargin: bodyMargin), // index 1
+    List<Widget> techMainScreenPages = [
+      homeScreen(
+          size: size, textTheme: textTheme, bodyMargin: bodyMargin), // index 0
+      profileScreen(
+          size: size, textTheme: textTheme, bodyMargin: bodyMargin), // index 1
     ];
     return SafeArea(
       child: Scaffold(
@@ -47,14 +50,18 @@ class _MainScreenState extends State<MainScreen> {
         body: Stack(children: [
           Center(
             child: Positioned.fill(
-                child: techMainScreenPages[selectedPageIndex],
+              child: techMainScreenPages[selectedPageIndex],
             ),
           ),
-          BottomNavigation(size: size, bodyMargin: bodyMargin, changeScreen: (int value){
-            setState(() {
-              selectedPageIndex = value;
-            });
-          },),
+          BottomNavigation(
+            size: size,
+            bodyMargin: bodyMargin,
+            changeScreen: (int value) {
+              setState(() {
+                selectedPageIndex = value;
+              });
+            },
+          ),
         ]),
       ),
     );
@@ -71,7 +78,7 @@ class BottomNavigation extends StatelessWidget {
 
   final Size size;
   final double bodyMargin;
-  final Function(int)  changeScreen;
+  final Function(int) changeScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +111,7 @@ class BottomNavigation extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
-                  onPressed: (()=>changeScreen(0)),
+                  onPressed: (() => changeScreen(0)),
                   icon: ImageIcon(
                     Assets.icons.home.provider(),
                     color: Colors.white,
@@ -118,7 +125,7 @@ class BottomNavigation extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: (()=> changeScreen(1)),
+                  onPressed: (() => changeScreen(1)),
                   icon: ImageIcon(
                     Assets.icons.user.provider(),
                     color: Colors.white,
