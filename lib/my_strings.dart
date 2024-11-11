@@ -1,4 +1,4 @@
-class myStrings{
+class myStrings {
   static const String viewHotestBlog = "مشاهده داغترین نوشته ها";
   static const String viewHotestPodcasts = "مشاهده داغترین پادکست ها";
   static const String relatedArticles = "نوشته های مرتبط";
@@ -8,4 +8,7 @@ class myStrings{
   static const String myFavBlog = "مقالات مورد علاقه من";
   static const String myFavPodcast = "مقالات مورد علاقه من";
   static const String logout = "خروج از حساب کاربری";
+  static const String welcome = """به تک بلاگ خوش اومدی
+  
+  برای ارسال مطالب و پادکست باید حتما ثبت نام کنی""";
 }
