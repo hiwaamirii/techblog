@@ -4,8 +4,8 @@ import 'package:techblog/models/fake_data.dart';
 import 'package:techblog/my_colors.dart';
 import 'package:techblog/my_strings.dart';
 
-class homeScreen extends StatelessWidget {
-  const homeScreen({
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({
     super.key,
     required this.size,
     required this.textTheme,
@@ -24,15 +24,15 @@ class homeScreen extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
         child: Column(
           children: [
-            homePagePoster(size: size, textTheme: textTheme),
+            HomePagePoster(size: size, textTheme: textTheme),
             const SizedBox(height: 16),
-            homePageTagList(bodyMargin: bodyMargin, textTheme: textTheme),
+            HomePageTagList(bodyMargin: bodyMargin, textTheme: textTheme),
             const SizedBox(height: 32),
-            seeMoreBlog(bodyMargin: bodyMargin, textTheme: textTheme),
-            homePageBlogList(
+            SeeMoreBlog(bodyMargin: bodyMargin, textTheme: textTheme),
+            HomePageBlogList(
                 size: size, bodyMargin: bodyMargin, textTheme: textTheme),
-            seeMorePodcast(bodyMargin: bodyMargin, textTheme: textTheme),
-            homePagePodcastList(size: size, bodyMargin: bodyMargin),
+            SeeMorePodcast(bodyMargin: bodyMargin, textTheme: textTheme),
+            HomePagePodcastList(size: size, bodyMargin: bodyMargin),
             const SizedBox(height: 60),
           ],
         ),
@@ -41,8 +41,8 @@ class homeScreen extends StatelessWidget {
   }
 }
 
-class homePagePodcastList extends StatelessWidget {
-  const homePagePodcastList({
+class HomePagePodcastList extends StatelessWidget {
+  const HomePagePodcastList({
     super.key,
     required this.size,
     required this.bodyMargin,
@@ -110,8 +110,8 @@ class homePagePodcastList extends StatelessWidget {
   }
 }
 
-class seeMorePodcast extends StatelessWidget {
-  const seeMorePodcast({
+class SeeMorePodcast extends StatelessWidget {
+  const SeeMorePodcast({
     super.key,
     required this.bodyMargin,
     required this.textTheme,
@@ -132,7 +132,7 @@ class seeMorePodcast extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           Text(
-            myStrings.viewHotestPodcasts,
+            MyStrings.viewHotestPodcasts,
             style: textTheme.bodyLarge,
           ),
         ],
@@ -141,8 +141,8 @@ class seeMorePodcast extends StatelessWidget {
   }
 }
 
-class homePageBlogList extends StatelessWidget {
-  const homePageBlogList({
+class HomePageBlogList extends StatelessWidget {
+  const HomePageBlogList({
     super.key,
     required this.size,
     required this.bodyMargin,
@@ -241,8 +241,8 @@ class homePageBlogList extends StatelessWidget {
   }
 }
 
-class seeMoreBlog extends StatelessWidget {
-  const seeMoreBlog({
+class SeeMoreBlog extends StatelessWidget {
+  const SeeMoreBlog({
     super.key,
     required this.bodyMargin,
     required this.textTheme,
@@ -263,7 +263,7 @@ class seeMoreBlog extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           Text(
-            myStrings.viewHotestBlog,
+            MyStrings.viewHotestBlog,
             style: textTheme.bodyLarge,
           ),
         ],
@@ -272,8 +272,8 @@ class seeMoreBlog extends StatelessWidget {
   }
 }
 
-class homePageTagList extends StatelessWidget {
-  const homePageTagList({
+class HomePageTagList extends StatelessWidget {
+  const HomePageTagList({
     super.key,
     required this.bodyMargin,
     required this.textTheme,
@@ -327,8 +327,8 @@ class homePageTagList extends StatelessWidget {
   }
 }
 
-class homePagePoster extends StatelessWidget {
-  const homePagePoster({
+class HomePagePoster extends StatelessWidget {
+  const HomePagePoster({
     super.key,
     required this.size,
     required this.textTheme,

@@ -4,8 +4,8 @@ import 'package:techblog/my_colors.dart';
 import 'package:techblog/my_component.dart';
 import 'package:techblog/my_strings.dart';
 
-class profileScreen extends StatelessWidget {
-  const profileScreen({
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({
     super.key,
     required this.size,
     required this.textTheme,
@@ -37,7 +37,7 @@ class profileScreen extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               Text(
-                myStrings.imageProfileEdit,
+                MyStrings.imageProfileEdit,
                 style: textTheme.bodyLarge,
               ),
             ],
@@ -53,7 +53,7 @@ class profileScreen extends StatelessWidget {
             style: textTheme.headlineLarge,
           ),
           const SizedBox(height: 40),
-          techDivider(size: size),
+          TechDivider(size: size),
           InkWell(
             onTap: () {},
             splashColor: SolidColors.primaryColor,
@@ -61,13 +61,13 @@ class profileScreen extends StatelessWidget {
               height: 45,
               child: Center(
                 child: Text(
-                  myStrings.myFavBlog,
+                  MyStrings.myFavBlog,
                   style: textTheme.headlineLarge,
                 ),
               ),
             ),
           ),
-          techDivider(size: size),
+          TechDivider(size: size),
           InkWell(
             onTap: () {},
             splashColor: SolidColors.primaryColor,
@@ -75,13 +75,13 @@ class profileScreen extends StatelessWidget {
               height: 45,
               child: Center(
                 child: Text(
-                  myStrings.myFavPodcast,
+                  MyStrings.myFavPodcast,
                   style: textTheme.headlineLarge,
                 ),
               ),
             ),
           ),
-          techDivider(size: size),
+          TechDivider(size: size),
           InkWell(
             onTap: () {},
             splashColor: SolidColors.primaryColor,
@@ -89,7 +89,7 @@ class profileScreen extends StatelessWidget {
               height: 45,
               child: Center(
                 child: Text(
-                  myStrings.logout,
+                  MyStrings.logout,
                   style: textTheme.headlineLarge,
                 ),
               ),

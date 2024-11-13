@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'my_colors.dart';
 
-
-class techDivider extends StatelessWidget {
-  const techDivider({
-    super.key,
-    required this.size
-  });
+class TechDivider extends StatelessWidget {
+  const TechDivider({super.key, required this.size});
 
   final Size size;
 

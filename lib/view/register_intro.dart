@@ -9,7 +9,6 @@ class RegisterIntro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
-    var size = MediaQuery.of(context).size;
     return SafeArea(
         child: Scaffold(
       body: Center(
@@ -25,7 +24,7 @@ class RegisterIntro extends StatelessWidget {
               child: RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                  text: myStrings.welcome,
+                  text: MyStrings.welcome,
                   style: textTheme.headlineLarge,
                 ),
               ),
@@ -35,18 +34,18 @@ class RegisterIntro extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {},
                 style: ButtonStyle(
-                  textStyle: MaterialStateProperty.resolveWith(
+                  textStyle: WidgetStateProperty.resolveWith(
                     (states) {
-                      if (states.contains(MaterialState.pressed)) {
+                      if (states.contains(WidgetState.pressed)) {
                         return const TextStyle(
                             fontSize: 25, color: Colors.white);
                       }
                       return const TextStyle(fontSize: 20, color: Colors.white);
                     },
                   ),
-                  backgroundColor: MaterialStateProperty.resolveWith(
+                  backgroundColor: WidgetStateProperty.resolveWith(
                     (states) {
-                      if (states.contains(MaterialState.pressed)) {
+                      if (states.contains(WidgetState.pressed)) {
                         return SolidColors.seeMore;
                       }
                       return SolidColors.primaryColor;
