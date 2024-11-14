@@ -29,6 +29,33 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [Locale('fa')],
       //farsi
       theme: ThemeData(
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(width: 2),
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+
+            textStyle: WidgetStateProperty.resolveWith(
+              (states) {
+                if (states.contains(WidgetState.pressed)) {
+                  return const TextStyle(fontSize: 25, color: Colors.white);
+                }
+                return const TextStyle(fontSize: 20, color: Colors.white);
+              },
+            ),
+            backgroundColor: WidgetStateProperty.resolveWith(
+              (states) {
+                if (states.contains(WidgetState.pressed)) {
+                  return SolidColors.primaryColor;
+                }
+                return SolidColors.primaryColor;
+              },
+            ),
+          ),
+        ),
         fontFamily: "vazir",
         textTheme: const TextTheme(
           headlineLarge: TextStyle(
@@ -66,6 +93,11 @@ class MyApp extends StatelessWidget {
               fontSize: 16,
               fontWeight: FontWeight.w300,
               color: SolidColors.posterSubTitle),
+          bodyMedium: TextStyle(
+              fontFamily: 'vazir',
+              fontSize: 16,
+              fontWeight: FontWeight.w800,
+              color: Color(0xFF707070)),
         ),
       ),
       debugShowCheckedModeBanner: false,
