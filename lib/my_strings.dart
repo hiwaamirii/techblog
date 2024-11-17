@@ -8,7 +8,12 @@ class MyStrings {
   static const String myFavBlog = "مقالات مورد علاقه من";
   static const String myFavPodcast = "مقالات مورد علاقه من";
   static const String insertYourEmail = "لطفا ایمیلت رو وارد کن";
+  static const String activateCode = "لطفا کد فعالسازی رو وارد کن";
+  static const String chooseCat = "دسته بندی هایی که دوست داری رو انتخاب کن";
   static const String logout = "خروج از حساب کاربری";
+  static const String successfulRegistration = """
+  تبریک میگم ، ایمیل با موفقیت تایید شد
+لطفا اطلاعات ثبت نام رو کامل کن""";
   static const String welcome = """به تک بلاگ خوش اومدی
   
   برای ارسال مطالب و پادکست باید حتما ثبت نام کنی""";

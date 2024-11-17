@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/my_colors.dart';
 import 'package:techblog/my_strings.dart';
+import 'package:techblog/view/my_cats.dart';
 import 'package:validators/validators.dart';
 
 class RegisterIntro extends StatelessWidget {
@@ -17,9 +18,9 @@ class RegisterIntro extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image(
-              image: Assets.icons.user.provider(),
-              color: SolidColors.seeMore,
+            Image.asset(
+              "assets/icons/techbot.png",
+              height: 100,
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16),
@@ -93,7 +94,11 @@ class RegisterIntro extends StatelessWidget {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // close email bottom sheet
+                      Navigator.pop(context);
+                      _activeCodeBottomSheet(context, size, textTheme);
+                    },
                     child: const Text(
                       "ادامه",
                       style:
@@ -105,5 +110,66 @@ class RegisterIntro extends StatelessWidget {
             ),
           );
         });
+
+  }
+  Future<dynamic> _activeCodeBottomSheet(
+      BuildContext context, Size size, TextTheme textTheme) {
+    // RegExp isEmail = RegExp('^[z-z-09]+@');
+    return showModalBottomSheet(
+        isScrollControlled: true,
+        context: context,
+        backgroundColor: Colors.transparent,
+        builder: (context) {
+          return Padding(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: Container(
+              width: 500,
+              height: size.height / 2,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    MyStrings.activateCode,
+                    style: textTheme.headlineLarge,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(24),
+                    child: TextField(
+                      onChanged: (value) {
+                        // print(value + " is Email = " + isEmail.hasMatch(value).toString());
+                        print(value + " is Email : "+ isEmail(value).toString());
+                      },
+                      style: textTheme.headlineLarge,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        hintText: "******",
+                        hintStyle: textTheme.bodyMedium,
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const MyCats(),));
+                    },
+                    child: const Text(
+                      "ادامه",
+                      style:
+                      TextStyle(fontFamily: "vazir", color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+
   }
 }
