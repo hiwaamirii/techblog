@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
             HomePageBlogList(
                 size: size, bodyMargin: bodyMargin, textTheme: textTheme),
             SeeMorePodcast(bodyMargin: bodyMargin, textTheme: textTheme),
-            HomePagePodcastList(size: size, bodyMargin: bodyMargin),
+            HomePagePodcastList(size: size, bodyMargin: bodyMargin, textTheme: textTheme,),
             const SizedBox(height: 60),
           ],
         ),
@@ -47,10 +47,12 @@ class HomePagePodcastList extends StatelessWidget {
     super.key,
     required this.size,
     required this.bodyMargin,
+    required this.textTheme,
   });
 
   final Size size;
   final double bodyMargin;
+  final TextTheme textTheme;
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +103,7 @@ class HomePagePodcastList extends StatelessWidget {
                   podCastList[index].title,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
+                  style: textTheme.headlineLarge,
                 ),
               ],
             ),
@@ -231,6 +234,7 @@ class HomePageBlogList extends StatelessWidget {
                     blogList[index].title,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
+                    style: textTheme.headlineLarge,
                   ),
                 ),
               ],

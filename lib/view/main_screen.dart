@@ -10,9 +10,11 @@ class MainScreen extends StatefulWidget {
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
-
+final GlobalKey<ScaffoldState> _key = GlobalKey();
 class _MainScreenState extends State<MainScreen> {
   var selectedPageIndex = 0;
+
+
   @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
@@ -21,15 +23,80 @@ class _MainScreenState extends State<MainScreen> {
 
     return SafeArea(
       child: Scaffold(
+        key: _key,
+        drawer: Drawer(
+          backgroundColor: SolidColors.scaffoldBg,
+          child: Padding(
+            padding: EdgeInsets.only(right: bodyMargin, left: bodyMargin),
+            child: ListView(
+              children: [
+                DrawerHeader(
+                  child: Center(
+                    child: Image.asset(
+                      "assets/images/techblog.png",
+                      scale: 3,
+                    ),
+                  ),
+                ),
+                ListTile(
+                  title: Text(
+                    "پروفایل کاربری",
+                    style: textTheme.headlineLarge,
+                  ),
+                  onTap: () {},
+                ),
+                const Divider(
+                  color: SolidColors.dividerColor,
+                ),
+                ListTile(
+                  title: Text(
+                    "درباره تک‌بلاگ",
+                    style: textTheme.headlineLarge,
+                  ),
+                  onTap: () {},
+                ),
+                const Divider(
+                  color: SolidColors.dividerColor,
+                ),
+                ListTile(
+                  title: Text(
+                    "اشتراک گذاری تک بلاگ",
+                    style: textTheme.headlineLarge,
+                  ),
+                  onTap: () {},
+                ),
+                const Divider(
+                  color: SolidColors.dividerColor,
+                ),
+                ListTile(
+                  title: Text(
+                    "تک‌بلاگ در گیت هاب",
+                    style: textTheme.headlineLarge,
+                  ),
+                  onTap: () {},
+                ),
+                const Divider(
+                  color: SolidColors.dividerColor,
+                ),
+              ],
+            ),
+          ),
+        ),
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           elevation: 0.0,
           backgroundColor: SolidColors.scaffoldBg,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const Icon(
-                Icons.menu,
-                color: Colors.black,
+              InkWell(
+                onTap: (() {
+                  _key.currentState!.openDrawer();
+                }),
+                child: const Icon(
+                  Icons.menu,
+                  color: Colors.black,
+                ),
               ),
               Image(
                 image: Assets.images.techblog.provider(),
