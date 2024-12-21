@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:techblog/component/my_component.dart';
+import 'package:techblog/component/my_strings.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/component/my_colors.dart';
 import 'package:techblog/view/home_screen.dart';
@@ -63,7 +66,9 @@ class MainScreen extends StatelessWidget {
                     "اشتراک گذاری تک بلاگ",
                     style: textTheme.headlineLarge,
                   ),
-                  onTap: () {},
+                  onTap: ()  async {
+                    await Share.share(MyStrings.shareText);
+                  },
                 ),
                 const Divider(
                   color: SolidColors.dividerColor,
@@ -73,7 +78,9 @@ class MainScreen extends StatelessWidget {
                     "تک‌بلاگ در گیت هاب",
                     style: textTheme.headlineLarge,
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    myLaunchUrl(MyStrings.techBlogGithubUrl);
+                  },
                 ),
                 const Divider(
                   color: SolidColors.dividerColor,
@@ -137,6 +144,7 @@ class MainScreen extends StatelessWidget {
     );
   }
 }
+
 
 class BottomNavigation extends StatelessWidget {
   const BottomNavigation({

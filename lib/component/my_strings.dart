@@ -1,5 +1,6 @@
 class MyStrings {
   static const String viewHotestBlog = "مشاهده داغترین نوشته ها";
+  static const String techBlogGithubUrl = "https://github.com/sasansafari/techblog";
   static const String viewHotestPodcasts = "مشاهده داغترین پادکست ها";
   static const String relatedArticles = "نوشته های مرتبط";
   static const String writeArticle = "ارسال مقاله";
@@ -11,6 +12,10 @@ class MyStrings {
   static const String activateCode = "لطفا کد فعالسازی رو وارد کن";
   static const String chooseCat = "دسته بندی هایی که دوست داری رو انتخاب کن";
   static const String logout = "خروج از حساب کاربری";
+  static const String shareText = """
+  \nمن از تک بلاگ استفاده میکنم خیلی باحاله، تو هم داشته باش
+  www.tateshow.ir
+  """;
   static const String successfulRegistration = """
   تبریک میگم ، ایمیل با موفقیت تایید شد
 لطفا اطلاعات ثبت نام رو کامل کن""";
