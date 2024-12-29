@@ -27,20 +27,23 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
-        child: Column(
-          children: [
-            HomePagePoster(size: size, textTheme: textTheme),
-            const SizedBox(height: 16),
-            HomePageTagList(bodyMargin: bodyMargin, textTheme: textTheme),
-            const SizedBox(height: 32),
-            SeeMoreBlog(bodyMargin: bodyMargin, textTheme: textTheme),
-            TopVisited(),
-            SeeMorePodcast(bodyMargin: bodyMargin, textTheme: textTheme),
-            topPodcasts(),
-            const SizedBox(height: 60),
-          ],
+      child: Obx(
+          () => Padding(
+          padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
+          child: homeScreenController.loading.value==false?  Column(
+              children: [
+                poster(),
+                const SizedBox(height: 16),
+                HomePageTagList(bodyMargin: bodyMargin, textTheme: textTheme),
+                const SizedBox(height: 32),
+                SeeMoreBlog(bodyMargin: bodyMargin, textTheme: textTheme),
+                TopVisited(),
+                SeeMorePodcast(bodyMargin: bodyMargin, textTheme: textTheme),
+                topPodcasts(),
+                const SizedBox(height: 60),
+              ],
+            )
+          : const Center(child: loading()),
         ),
       ),
     );
@@ -68,35 +71,36 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           CachedNetworkImage(
                             imageUrl:
-                            homeScreenController.topPodcasts[index].poster!,
-                            imageBuilder: ((context, imageProvider) => Container(
-                              decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(16),
-                                ),
-                                image: DecorationImage(
-                                    image: imageProvider, fit: BoxFit.cover),
-                              ),
-                              foregroundDecoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(16),
-                                ),
-                                gradient: LinearGradient(
-                                  colors: GradiantColors.blogPost,
-                                  begin: Alignment.bottomCenter,
-                                  end: Alignment.topCenter,
-                                ),
-                              ),
-                            )
-                            ),
-                            placeholder: ((context, url) => const SpinKitFadingCube(
-                              color: SolidColors.primaryColor,
-                              size: 32.0,
-                            )),
-                            errorWidget: ((context, url, error) =>
-                            const Icon(Icons.image_not_supported_outlined,size: 50, color: Colors.grey,)),
+                                homeScreenController.topPodcasts[index].poster!,
+                            imageBuilder: ((context, imageProvider) =>
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(16),
+                                    ),
+                                    image: DecorationImage(
+                                        image: imageProvider,
+                                        fit: BoxFit.cover),
+                                  ),
+                                  foregroundDecoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(16),
+                                    ),
+                                    gradient: LinearGradient(
+                                      colors: GradiantColors.blogPost,
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter,
+                                    ),
+                                  ),
+                                )),
+                            placeholder: ((context, url) =>
+                                const loading()),
+                            errorWidget: ((context, url, error) => const Icon(
+                                  Icons.image_not_supported_outlined,
+                                  size: 50,
+                                  color: Colors.grey,
+                                )),
                           ),
-
                           Positioned(
                             bottom: 8,
                             left: 0,
@@ -148,6 +152,53 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+  Widget poster() {
+    return Stack(
+      children: [
+        Container(
+          width: size.width / 1.25,
+          height: size.height / 4.2,
+          foregroundDecoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(16)),
+              gradient: LinearGradient(
+                colors: GradiantColors.homePosterCoverGradiant,
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              )),
+          child: CachedNetworkImage(
+            imageUrl: homeScreenController.poster.value.image!,
+            imageBuilder: ((context, imageProvider) => Container(
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(16),
+                    ),
+                    image: DecorationImage(
+                        image: imageProvider, fit: BoxFit.cover),
+                  ),
+                )),
+            placeholder: ((context, url) => const loading()),
+            errorWidget: ((context, url, error) => const Icon(
+                  Icons.image_not_supported_outlined,
+                  size: 50,
+                  color: Colors.grey,
+                )),
+          ),
+        ),
+        Positioned(
+          bottom: 8,
+          left: 0,
+          right: 0,
+          child: Column(
+            children: [
+              Text(homeScreenController.poster.value.title!,
+                  style: textTheme.headlineSmall),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget topPodcasts() {
     return SizedBox(
       height: size.height / 3.5,
@@ -178,12 +229,12 @@ class HomeScreen extends StatelessWidget {
                                     image: imageProvider, fit: BoxFit.cover),
                               ),
                             )),
-                        placeholder: ((context, url) => const SpinKitFadingCube(
-                              color: SolidColors.primaryColor,
-                              size: 32.0,
+                        placeholder: ((context, url) => const loading()),
+                        errorWidget: ((context, url, error) => const Icon(
+                              Icons.image_not_supported_outlined,
+                              size: 50,
+                              color: Colors.grey,
                             )),
-                        errorWidget: ((context, url, error) =>
-                            const Icon(Icons.image_not_supported_outlined,size: 50, color: Colors.grey,)),
                       ),
                     ),
                   ),
@@ -292,80 +343,6 @@ class HomePageTagList extends StatelessWidget {
               ),
             );
           })),
-    );
-  }
-}
-
-class HomePagePoster extends StatelessWidget {
-  const HomePagePoster({
-    super.key,
-    required this.size,
-    required this.textTheme,
-  });
-
-  final Size size;
-  final TextTheme textTheme;
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          width: size.width / 1.25,
-          height: size.height / 4.2,
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(16)),
-            image: DecorationImage(
-              image: AssetImage(
-                homePagePosterMap["imageAsset"],
-              ),
-              fit: BoxFit.cover,
-            ),
-          ),
-          foregroundDecoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(16)),
-              gradient: LinearGradient(
-                colors: GradiantColors.homePosterCoverGradiant,
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              )),
-        ),
-        Positioned(
-          bottom: 8,
-          left: 0,
-          right: 0,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                      homePagePosterMap["writer"] +
-                          " - " +
-                          homePagePosterMap["date"],
-                      style: textTheme.titleSmall),
-                  Row(
-                    children: [
-                      Text(
-                        homePagePosterMap["view"],
-                        style: textTheme.titleSmall,
-                      ),
-                      const SizedBox(width: 3),
-                      const Icon(
-                        Icons.remove_red_eye_sharp,
-                        size: 16,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              Text("دوازده قدم برنامه نویسی یک دوره ی...",
-                  style: textTheme.headlineSmall),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }

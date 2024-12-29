@@ -2,14 +2,18 @@ import 'package:get/get.dart';
 import 'package:techblog/component/api_constant.dart';
 import 'package:techblog/models/article_model.dart';
 import 'package:techblog/models/podcast_model.dart';
+import 'package:techblog/models/poster_model.dart';
 import 'package:techblog/services/dio_service.dart';
 
 class HomeScreenController extends GetxController {
+  Rx<PosterModel> poster = PosterModel().obs;
   RxList tagsList = RxList();
   RxList<ArticleModel> topVisitedList = RxList();
   RxList<PodcastModel> topPodcasts = RxList();
+  RxBool loading = false.obs;
 
   getHomeItems() async {
+    loading.value = true;
     var response = await DioService().getMethod(ApiConstant.getHomeItem);
 
     @override
@@ -29,6 +33,9 @@ class HomeScreenController extends GetxController {
           PodcastModel.fromJson(element),
         );
       });
+      poster.value = PosterModel.fromJson(response.data['poster']);
+
+      loading.value = false;
     }
   }
 }
