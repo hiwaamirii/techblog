@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:techblog/controller/home_screen_controller.dart';
@@ -8,7 +10,7 @@ import 'package:techblog/component/my_component.dart';
 import 'package:techblog/component/my_strings.dart';
 
 class HomeScreen extends StatelessWidget {
-   HomeScreen({
+  HomeScreen({
     super.key,
     required this.size,
     required this.textTheme,
@@ -34,7 +36,7 @@ class HomeScreen extends StatelessWidget {
             HomePageTagList(bodyMargin: bodyMargin, textTheme: textTheme),
             const SizedBox(height: 32),
             SeeMoreBlog(bodyMargin: bodyMargin, textTheme: textTheme),
-           TopVisited(),
+            TopVisited(),
             SeeMorePodcast(bodyMargin: bodyMargin, textTheme: textTheme),
             topPodcasts(),
             const SizedBox(height: 60),
@@ -43,11 +45,12 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-  Widget TopVisited(){
+
+  Widget TopVisited() {
     return SizedBox(
       height: size.height / 3.5,
       child: Obx(
-            () => ListView.builder(
+        () => ListView.builder(
           itemCount: homeScreenController.topVisitedList.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: ((context, index) {
@@ -63,27 +66,37 @@ class HomeScreen extends StatelessWidget {
                       width: size.width / 2.4,
                       child: Stack(
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(16),
+                          CachedNetworkImage(
+                            imageUrl:
+                            homeScreenController.topPodcasts[index].poster!,
+                            imageBuilder: ((context, imageProvider) => Container(
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(16),
+                                ),
+                                image: DecorationImage(
+                                    image: imageProvider, fit: BoxFit.cover),
                               ),
-                              image: DecorationImage(
-                                image: NetworkImage(homeScreenController.topVisitedList[index].image!),
-                                fit: BoxFit.cover,
+                              foregroundDecoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(16),
+                                ),
+                                gradient: LinearGradient(
+                                  colors: GradiantColors.blogPost,
+                                  begin: Alignment.bottomCenter,
+                                  end: Alignment.topCenter,
+                                ),
                               ),
+                            )
                             ),
-                            foregroundDecoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(16),
-                              ),
-                              gradient: LinearGradient(
-                                colors: GradiantColors.blogPost,
-                                begin: Alignment.bottomCenter,
-                                end: Alignment.topCenter,
-                              ),
-                            ),
+                            placeholder: ((context, url) => const SpinKitFadingCube(
+                              color: SolidColors.primaryColor,
+                              size: 32.0,
+                            )),
+                            errorWidget: ((context, url, error) =>
+                            const Icon(Icons.image_not_supported_outlined,size: 50, color: Colors.grey,)),
                           ),
+
                           Positioned(
                             bottom: 8,
                             left: 0,
@@ -91,12 +104,15 @@ class HomeScreen extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Text(homeScreenController.topVisitedList[index].author!,
+                                Text(
+                                    homeScreenController
+                                        .topVisitedList[index].author!,
                                     style: textTheme.titleSmall),
                                 Row(
                                   children: [
                                     Text(
-                                      homeScreenController.topVisitedList[index].view!,
+                                      homeScreenController
+                                          .topVisitedList[index].view!,
                                       style: textTheme.titleSmall,
                                     ),
                                     const SizedBox(width: 8),
@@ -131,11 +147,12 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-  Widget topPodcasts(){
+
+  Widget topPodcasts() {
     return SizedBox(
       height: size.height / 3.5,
       child: Obx(
-        ()=> ListView.builder(
+        () => ListView.builder(
           itemCount: homeScreenController.topPodcasts.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: ((context, index) {
@@ -149,30 +166,24 @@ class HomeScreen extends StatelessWidget {
                     child: SizedBox(
                       height: size.height / 5.3,
                       width: size.width / 2.4,
-                      child: Stack(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(16),
+                      child: CachedNetworkImage(
+                        imageUrl:
+                            homeScreenController.topPodcasts[index].poster!,
+                        imageBuilder: ((context, imageProvider) => Container(
+                              decoration: BoxDecoration(
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(16),
+                                ),
+                                image: DecorationImage(
+                                    image: imageProvider, fit: BoxFit.cover),
                               ),
-                              image: DecorationImage(
-                                image: NetworkImage(homeScreenController.topPodcasts[index].poster!),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            foregroundDecoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(16),
-                              ),
-                              gradient: LinearGradient(
-                                colors: GradiantColors.blogPost,
-                                begin: Alignment.bottomCenter,
-                                end: Alignment.topCenter,
-                              ),
-                            ),
-                          ),
-                        ],
+                            )),
+                        placeholder: ((context, url) => const SpinKitFadingCube(
+                              color: SolidColors.primaryColor,
+                              size: 32.0,
+                            )),
+                        errorWidget: ((context, url, error) =>
+                            const Icon(Icons.image_not_supported_outlined,size: 50, color: Colors.grey,)),
                       ),
                     ),
                   ),
@@ -191,6 +202,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
 class SeeMorePodcast extends StatelessWidget {
   const SeeMorePodcast({
     super.key,
