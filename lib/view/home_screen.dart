@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
               children: [
                 poster(),
                 const SizedBox(height: 16),
-                HomePageTagList(bodyMargin: bodyMargin, textTheme: textTheme),
+                tags(),
                 const SizedBox(height: 32),
                 SeeMoreBlog(bodyMargin: bodyMargin, textTheme: textTheme),
                 TopVisited(),
@@ -199,6 +199,25 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+  Widget tags(){
+    return SizedBox(
+      height: 60,
+      child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: tagList.length,
+          itemBuilder: ((context, index) {
+            return Padding(
+              padding:
+              EdgeInsets.fromLTRB(0, 8, index == 0 ? bodyMargin : 15, 8),
+              child: MainTags(
+                textTheme: textTheme,
+                index: index,
+              ),
+            );
+          })),
+    );
+  }
+
   Widget topPodcasts() {
     return SizedBox(
       height: size.height / 3.5,
@@ -312,37 +331,6 @@ class SeeMoreBlog extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class HomePageTagList extends StatelessWidget {
-  const HomePageTagList({
-    super.key,
-    required this.bodyMargin,
-    required this.textTheme,
-  });
-
-  final double bodyMargin;
-  final TextTheme textTheme;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 60,
-      child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: tagList.length,
-          itemBuilder: ((context, index) {
-            return Padding(
-              padding:
-                  EdgeInsets.fromLTRB(0, 8, index == 0 ? bodyMargin : 15, 8),
-              child: MainTags(
-                textTheme: textTheme,
-                index: index,
-              ),
-            );
-          })),
     );
   }
 }
