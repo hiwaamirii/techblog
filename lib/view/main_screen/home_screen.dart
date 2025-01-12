@@ -71,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           CachedNetworkImage(
                             imageUrl:
-                                homeScreenController.topPodcasts[index].poster!,
+                                homeScreenController.topPodcasts[index].poster??"topPodcasts poster is null",
                             imageBuilder: ((context, imageProvider) =>
                                 Container(
                                   decoration: BoxDecoration(
@@ -110,13 +110,13 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 Text(
                                     homeScreenController
-                                        .topVisitedList[index].author!,
+                                        .topVisitedList[index].author??"topVisitedList author is null",
                                     style: textTheme.titleSmall),
                                 Row(
                                   children: [
                                     Text(
                                       homeScreenController
-                                          .topVisitedList[index].view!,
+                                          .topVisitedList[index].view??"topVisitedList view is null",
                                       style: textTheme.titleSmall,
                                     ),
                                     const SizedBox(width: 8),
@@ -137,7 +137,7 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(
                     width: size.width / 2.4,
                     child: Text(
-                      homeScreenController.topVisitedList[index].title!,
+                      homeScreenController.topVisitedList[index].title??"topVisitedList title is null",
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                       style: textTheme.headlineLarge,
@@ -166,7 +166,7 @@ class HomeScreen extends StatelessWidget {
                 end: Alignment.bottomCenter,
               )),
           child: CachedNetworkImage(
-            imageUrl: homeScreenController.poster.value.image!,
+            imageUrl: homeScreenController.poster.value.image??"poster image",
             imageBuilder: ((context, imageProvider) => Container(
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(
@@ -190,7 +190,7 @@ class HomeScreen extends StatelessWidget {
           right: 0,
           child: Column(
             children: [
-              Text(homeScreenController.poster.value.title!,
+              Text(homeScreenController.poster.value.title??"title",
                   style: textTheme.headlineSmall),
             ],
           ),
@@ -238,7 +238,7 @@ class HomeScreen extends StatelessWidget {
                       width: size.width / 2.4,
                       child: CachedNetworkImage(
                         imageUrl:
-                            homeScreenController.topPodcasts[index].poster!,
+                            homeScreenController.topPodcasts[index].poster??"topPodcasts poster is null",
                         imageBuilder: ((context, imageProvider) => Container(
                               decoration: BoxDecoration(
                                 borderRadius: const BorderRadius.all(
@@ -258,7 +258,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    homeScreenController.topPodcasts[index].title!,
+                    homeScreenController.topPodcasts[index].title??"topPodcasts title is null",
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: textTheme.headlineLarge,

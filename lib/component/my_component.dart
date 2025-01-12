@@ -78,7 +78,6 @@ class MainTags extends StatelessWidget {
     );
   }
 }
-
 myLaunchUrl(String url) async {
   var uri = Uri.parse(url);
   if(await canLaunchUrl(Uri.parse(url))){
@@ -86,4 +85,43 @@ myLaunchUrl(String url) async {
   }else {
     print("cloud not launch ${uri.toString()}");
   }
+
+}
+
+PreferredSize appBar(String title) {
+  return PreferredSize(
+    preferredSize: const Size.fromHeight(80),
+    child: Padding(
+      padding: const EdgeInsets.all(12),
+      child: AppBar(
+        backgroundColor: Colors.transparent,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Center(
+              child: Text(title,
+                style: const TextStyle(
+                  fontFamily: 'vazirbold',
+                  fontSize: 16,
+                  color: SolidColors.primaryColor,
+                ),
+              ),
+            ),
+          ),
+        ],
+        leading: Padding(
+          padding: const EdgeInsets.only(right: 16),
+          child: Container(
+            height: 40,
+            width: 40,
+            decoration: BoxDecoration(
+              color: SolidColors.primaryColor.withBlue(100),
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(Icons.keyboard_arrow_right, color: Colors.white,),
+          ),
+        ),
+      ),
+    ),
+  );
 }
